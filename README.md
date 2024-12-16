@@ -1,37 +1,31 @@
-# TD_project_Alvaro-Ruben
-Data Processing final project of Álvaro Fernández Gómez and Rubén Fernández Rodrigo
+# Final Project - Data Processing: Recipe Dataset Analysis
+This repository contains the final project for the Data Processing course by Álvaro Fernández Gómez and Rubén Fernández Rodrigo. The project aims to analyze a dataset consisting of 20,130 entries corresponding to recipes from the Epicurious website (www.epicurious.com). The project is divided into four key steps:
 
-The project objective is to analyze a datasetthat consists of 20130 entries corresponding to recipes from the www.epicurious.com website.
-The project will be divided in 4 steps:
+# 1. Analysis of Input Variables and Text Preprocessing
+The first step involves performing an exploratory analysis of the dataset's input variables, along with preprocessing of the text data. We will generate visualizations to examine the relationships between the numerical variables and their characteristics. These include:
+•	Correlation between numerical variables
+•	The relationship between ratings and other variables
+•	Top ten most common categories
+•	Best-rated categories
+Additionally, all text variables will be concatenated into a single column, referred to as 'text,' to facilitate further processing.
 
-# 1) Analysis of input variables and text preprocessing.
-First we will plot some graphs that show the relationship between the numerical variables and some of their characteristics.
-Some of these graphs are:
-  -Correlation between variables
-  -Rating relation with the variables
-  -Top ten more common cattegories
-  -Best rated cattegories
+# 2. Vectorization of Text Data
+In this step, we will apply three different text vectorization techniques to the 'text' column:
+•	TF-IDF (Term Frequency-Inverse Document Frequency): This method does not account for the semantics of words but focuses on word frequency and inverse document frequency.
+•	Word2Vec: This technique utilizes word embeddings to represent words in a continuous vector space, capturing semantic relationships between words.
+•	BERT (Bidirectional Encoder Representations from Transformers): This method uses contextual embeddings, allowing the model to account for the surrounding context of words.
 
-We will also concatenate the text variables into one. We will call it 'text' 
+# 3. Model Training and Evaluation
+We train two machine learning models using the scikit-learn library: Random Forest and Support Vector Machine (SVM), applying the different vectorization techniques to evaluate their performance.
+Furthermore, we define and train two neural network models based on Long Short-Term Memory (LSTM) architecture. The first model uses the concatenated text of all five variables, while the second model treats each text variable separately as distinct inputs. Both models are trained using the Adam optimizer and Mean Squared Error (MSE) loss function. Hyperparameters such as the number of epochs, learning rate, and batch size have been tuned to optimize performance.
+The neural networks are trained using word2vec and BERT embeddings, with the model using separated text columns being trained only with word2vec data.
+To assess the performance of the models, we calculate the Mean Squared Error (MSE) and R² score for both training and test datasets. Additionally, we fine-tune a Hugging Face model (bert-base-uncased) using the default configuration and adapt it for our specific task.
 
-# 2) Vectorization of the variables
-We will use three different type of vectorizations:
-  -TF-IDF (Term Frequency-Inverse Document Frequency): It does not consider the semantics of the words
-  -word2vec: uses word embbeding
-  -BERT (Bidirectional Encoder Representations from Transformers): uses contextual embbeding
-  
-# 3) Training and evaluation of the model
-In this project, we will use two different neural networks. In both we will define an LSTM-based model. In the first neural network the input will be the concatenated text of the five varibles and in the second one the five text variables will be separated (five text columns).
-The model is trained using an Adam optimizer and Mean Squared Error (MSE) loss. We define the following parameters for training:
-  -num_epochs: Number of epochs for training.
-  -learning_rate: The learning rate for optimization.
-  -batch_size: The batch size for training and evaluation.
-  
-To evaluate the model's performance, we calculate the Mean Squared Error (MSE) on both training and test datasets. We will also calculate the R^2 score.
+# 4. Comparison of Results
+In this section, we compare the performance of the different techniques and models. The comparison is based on the performance metrics (MSE and R²) obtained using various vectorization methods, machine learning algorithms, and neural network architectures.
 
-# 4) Comparison of the results
-In this final section we will compare the measures and results obtained using the different techniques and strategies
-
+# 5. Extension
+As an extension of the project, we summarize the data in the 'directions' column of the dataset using the T5-small model. This step ensures the text data remains manageable and avoids excessively long execution times.
 
 
 
